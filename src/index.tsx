@@ -1,11 +1,13 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { render } from 'react-dom';
 import { ApolloProvider } from '@apollo/client';
-import { ChakraProvider, Box, SimpleGrid, Center, Text, Spinner } from '@chakra-ui/react';
+import { ChakraProvider, Box, SimpleGrid, Center, Text, Spinner, ColorModeScript, Flex, Image } from '@chakra-ui/react';
 import client from './services/apolloClient';
 import SearchBar from './components/SearchBar';
 import ContentCard from './components/ContentCard';
+import Header from './components/Header';
 import { fetchContentCards } from './services/fetchContentCards';
+import theme from './theme'; // Import your custom theme
 
 const ContentList: React.FC<{
   searchQuery: string;
@@ -59,8 +61,8 @@ const ContentList: React.FC<{
   }, [loading, hasMore]);
 
   return (
-    <Box>
-      <SimpleGrid columns={[1, 2, 3]} spacing="4">
+    <Box p="60px 62px">
+      <SimpleGrid columns={[1, 2, 3,4]} spacing="4">
         {content.map((item, index) => (
           <ContentCard
             key={index}
@@ -98,9 +100,10 @@ const App: React.FC = () => {
 
   return (
     <ApolloProvider client={client}>
-      <ChakraProvider>
-        <Box p="4">
-          <SearchBar onSearch={handleSearch} />
+      <ChakraProvider theme={theme}>
+        <ColorModeScript initialColorMode={theme.config.initialColorMode} />
+        <Box color="brand.dark_grey">
+          <Header onSearch={handleSearch} />
           <ContentList
             searchQuery={searchQuery}
             content={content}
