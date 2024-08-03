@@ -3,7 +3,6 @@ import { render } from 'react-dom';
 import { ApolloProvider } from '@apollo/client';
 import { ChakraProvider, Box, SimpleGrid, Center, Text, Spinner, ColorModeScript, Flex, Image } from '@chakra-ui/react';
 import client from './services/apolloClient';
-import SearchBar from './components/SearchBar';
 import ContentCard from './components/ContentCard';
 import Header from './components/Header';
 import { fetchContentCards } from './services/fetchContentCards';
@@ -78,6 +77,8 @@ const ContentList: React.FC<{
           <ContentCard
             key={index}
             name={item.name}
+            timeSpentOnByUsers={item.timeSpentOnByUsers}
+            length={item.length}
             imageUri={item.image.uri}
             categories={item.categories.map((cat: any) => cat.name)}
             participants={item.participants.map((participant: any) => ({

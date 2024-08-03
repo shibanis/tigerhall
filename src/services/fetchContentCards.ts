@@ -31,6 +31,8 @@ const GET_CONTENT_CARDS = gql`
       edges {
         ... on Podcast {
           name
+          timeSpentOnByUsers
+          length
           image {
             uri
           }
@@ -42,6 +44,7 @@ const GET_CONTENT_CARDS = gql`
             lastName
             jobTitle
             company
+            statsContentConsumedTotal
           }
         }
       }
