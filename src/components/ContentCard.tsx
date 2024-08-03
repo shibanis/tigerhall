@@ -13,7 +13,15 @@ interface ContentCardProps {
   }[];
 }
 
+const getResizedImageUrl = (url: string, width: number, height: number) => {
+  const urlObj = new URL(url);
+  urlObj.pathname = `/resize/${width}x${height}${urlObj.pathname}`;
+  return urlObj.toString();
+};
+
 const ContentCard: React.FC<ContentCardProps> = ({ name, imageUri, categories, participants }) => {
+  const resizedImageUri = getResizedImageUrl(imageUri, 244, 120);
+
   return (
     <Box
       borderRadius="lg"
@@ -24,7 +32,7 @@ const ContentCard: React.FC<ContentCardProps> = ({ name, imageUri, categories, p
       boxShadow="0px 1px 8px 0px #0000004D"
       position="relative"
     >
-      <Image src={imageUri} alt={name} width="244px" height="120px" />
+      <Image src={resizedImageUri} alt={name} width="244px" height="120px" />
       <Box p="2" color="brand.dark_grey">
         <Text
           fontSize="12px"

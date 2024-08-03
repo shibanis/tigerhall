@@ -62,7 +62,18 @@ const ContentList: React.FC<{
 
   return (
     <Box p="60px 62px">
-      <SimpleGrid columns={[1, 2, 3,4]} spacing="4">
+      <Text
+        fontSize="24px"
+        fontWeight="700"
+        lineHeight="28.8px"
+        letterSpacing="0.015em"
+        textAlign="left"
+        color="#F4F3F0"
+        pb="40px"
+      >
+        Tigerhall Library
+      </Text>
+      <SimpleGrid columns={[1, 2, 3, 4]} spacing="4">
         {content.map((item, index) => (
           <ContentCard
             key={index}
@@ -79,7 +90,7 @@ const ContentList: React.FC<{
         ))}
       </SimpleGrid>
       <Center ref={sentinelRef} py="4">
-        {loading ? <Spinner /> : hasMore ? <Text>Loading more content...</Text> : <Text>No more content to load.</Text>}
+        {loading ? <Spinner color="#FFFFFF" /> : hasMore ? <Text color="#FFFFFF">Loading more content...</Text> : <Text color="#FFFFFF">No more content to load.</Text>}
       </Center>
     </Box>
   );

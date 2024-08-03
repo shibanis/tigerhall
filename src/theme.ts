@@ -14,6 +14,7 @@ const theme = extendTheme({
     colors: {
         brand: {
             dark_grey: '#070708',
+            white: '#FFFFFF'
         },
         // Add more custom colors if needed
     },
