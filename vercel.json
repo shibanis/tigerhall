@@ -2,10 +2,12 @@
     "builds": [
       {
         "src": "src/index.tsx",
-        "use": "@vercel/node"
+        "use": "@vercel/static-build",
+        "config": {
+          "distDir": "dist"
+        }
       }
     ],
-    "output": "dist",
     "routes": [
       {
         "src": "/(.*)",
