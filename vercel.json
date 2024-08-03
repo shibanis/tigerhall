@@ -1,12 +1,11 @@
 {
-    "version": 2,
     "builds": [
       {
-        "src": "webpack.config.js",
+        "src": "src/index.tsx",
         "use": "@vercel/static-build",
         "config": {
-            "distDir": "dist"
-          }
+          "distDir": "dist"
+        }
       }
     ],
     "routes": [
