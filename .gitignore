@@ -1,1 +1,26 @@
-node_modules
+# Node modules
+node_modules/
+
+# Build output
+dist/
+build/
+
+# Environment variables
+.env
+
+# TypeScript output
+*.tsbuildinfo
+
+# Logs
+*.log
+
+# Optional: Yarn and npm lock files
+# Uncomment these lines if you want to ignore lock files.
+# yarn.lock
+package-lock.json
+
+# Optional: Coverage
+coverage/
+
+# Optional: Cache
+.cache/
