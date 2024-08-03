@@ -2,11 +2,12 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
   entry: './src/index.tsx',
-  mode: 'production', // Change this to 'production' for optimized builds
-  devtool: 'source-map', // Use 'source-map' for production if needed
+  mode: 'development',
+  devtool: 'inline-source-map',
   devServer: {
     static: {
       directory: path.join(__dirname, 'public'),
@@ -18,6 +19,13 @@ module.exports = {
   module: {
     rules: [
       {
+        test: /\.(png|jpg|gif|svg)$/,
+        type: 'asset/resource',
+        generator: {
+          filename: 'assets/[name][ext][query]',
+        },
+      },
+      {
         test: /\.tsx?$/,
         use: 'ts-loader',
         exclude: /node_modules/,
@@ -26,13 +34,7 @@ module.exports = {
         test: /\.css$/,
         use: [MiniCssExtractPlugin.loader, 'css-loader'],
       },
-      {
-        test: /\.(png|jpg|gif|svg)$/,
-        type: 'asset/resource',
-        generator: {
-          filename: 'assets/[name][ext][query]'
-        }
-      },
+
     ],
   },
   resolve: {
@@ -44,10 +46,17 @@ module.exports = {
     clean: true,
   },
   plugins: [
+    new CopyWebpackPlugin({
+      patterns: [
+        { from: path.resolve(__dirname, 'public/assets'), to: 'assets' }
+      ]
+    }),
     new HtmlWebpackPlugin({
       template: './public/index.html',
     }),
-    new MiniCssExtractPlugin(),
+    new MiniCssExtractPlugin({
+      filename: 'styles/[name].css', // Optional: Customize CSS output path
+    }),
     new CleanWebpackPlugin(),
   ],
 };
