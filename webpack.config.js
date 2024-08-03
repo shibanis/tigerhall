@@ -5,8 +5,8 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
   entry: './src/index.tsx',
-  mode: 'development',
-  devtool: 'inline-source-map',
+  mode: 'production', // Change this to 'production' for optimized builds
+  devtool: 'source-map', // Use 'source-map' for production if needed
   devServer: {
     static: {
       directory: path.join(__dirname, 'public'),
