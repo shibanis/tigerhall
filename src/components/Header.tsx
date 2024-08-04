@@ -7,7 +7,7 @@ const Header: React.FC<{ onSearch: (query: string) => void }> = ({ onSearch }) =
   };
 
   const searchBarWidth = useBreakpointValue({ base: '80%', md: '60%' });
-  const logoSize = useBreakpointValue({ base: '20px', md: '75px' });
+  const logoSize = useBreakpointValue({ base: '75px', md: '75px' });
   const logoSrc = useBreakpointValue({ base: '/assets/logo-plain.svg', md: '/assets/logo.svg' });
 
   return (
@@ -26,6 +26,7 @@ const Header: React.FC<{ onSearch: (query: string) => void }> = ({ onSearch }) =
           <Input
             placeholder="Search..."
             onChange={handleSearch}
+            color="white"
           />
         </InputGroup>
       </Box>
